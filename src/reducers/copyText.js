@@ -1,12 +1,14 @@
-const copyText = (state = [], action) => {
+const initialState = {
+  text: "test"
+};
+
+const copyText = (state = initialState, action) => {
   switch (action.type) {
     case "COPY_TEXT":
-      return [
+      return {
         ...state,
-        {
-          text: action.text
-        }
-      ];
+        text: action.payload
+      };
     default:
       return state;
   }
