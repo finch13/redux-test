@@ -2,20 +2,21 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { copyText } from "../actions/actions.index";
+import { copyText, retrieveUsers, deleteUser } from "../actions/actions.index";
 
 import AppView from "../components/App";
 
 function mapStateToProps(state) {
-  console.log("state >>>", state);
+  console.log("state from mapStateToProps >>>", state);
   return {
     buttonText: state.copyText.text,
-    changeTime: state.changeTime.time
+    changeTime: state.changeTime.time,
+    finchsUsers: state.users
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ copyText }, dispatch);
+  return bindActionCreators({ copyText, retrieveUsers, deleteUser }, dispatch);
 }
 
 const AppContainer = connect(
